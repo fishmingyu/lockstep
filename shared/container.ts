@@ -21,12 +21,12 @@ const docker = (...args: string[]) => execFileSync("docker", args, { encoding: "
 
 /** Why LayerFS cannot run here, or undefined when it can. */
 export function unavailable(): string | undefined {
-	if (!existsSync(DAEMON)) return `no LayerFS daemon at ${DAEMON}`;
-	if (!existsSync(join(ROOT, "vendor/layerfs/engine/crates/layerfs-node/layerfs.node"))) return "no LayerFS native addon";
+	if (!existsSync(DAEMON)) return `no LayerFS daemon at ${DAEMON} (npm run setup)`;
+	if (!existsSync(join(ROOT, "vendor/layerfs/engine/crates/layerfs-node/layerfs.node"))) return "no LayerFS native addon (npm run setup)";
 	try {
 		docker("image", "inspect", "--format", "{{.Id}}", SANDBOX_IMAGE);
 	} catch {
-		return `no sandbox image ${SANDBOX_IMAGE} (npm run setup:lfs)`;
+		return `no sandbox image ${SANDBOX_IMAGE} (npm run setup)`;
 	}
 	return undefined;
 }

@@ -1,4 +1,5 @@
 node_modules/
-vendor/
 runs/
 s0/node_modules/
+# LayerFS build cache (scripts/setup.sh): Cargo's home and target directory.
+.build/

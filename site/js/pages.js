@@ -4,8 +4,8 @@ import { TRACES } from "./trace.js";
 import { esc, md } from "./util.js";
 
 const COMMANDS = [
-	["npm run setup", "Clone Pi Durable at the pinned commit into `vendor/pi`, build it, and install."],
-	["npm run setup:lfs", "Build the Sandbox image (`docker/sandbox.Dockerfile`: Debian, python3, pytest). LayerFS itself is `vendor/layerfs` at 7d42d0b, with its daemon and Node addon built."],
+	["git clone --recurse-submodules \\\n  <this repo> && npm run setup", "Fetch the two submodules at their pinned commits (Pi Durable 1f6f319 in `vendor/pi`, LayerFS 7d42d0b in `vendor/layerfs`), build Pi, build LayerFS's daemon and Node addon in `rust:1.85.1-bookworm`, build the Sandbox image (`docker/sandbox.Dockerfile`: Debian, python3, pytest), and install. Needs Node 22 and Docker; safe to run again."],
+	["npm run setup:lfs", "Rebuild only the Sandbox image."],
 	["npm run demo1", "Demo 1, A–D (or `npm run demo1 -- B` for one). A runs here; B–D each run in a LayerFS client container with a fresh project."],
 	["npm run demo2", "Demo 2, E–I on LayerFS branches, each in its own client container (`npm run demo2 -- I` for one)."],
 	["npm run demo2:dir", "The control group: E–I with workers in plain directories, on this machine, no LayerFS. Needs `python3` with pytest, and `rsync`. Its traces are E-dir … I-dir."],

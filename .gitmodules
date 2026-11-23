@@ -1,0 +1,10 @@
+[submodule "vendor/pi"]
+	path = vendor/pi
+	url = https://github.com/earendil-works/pi.git
+	ignore = dirty
+	shallow = true
+[submodule "vendor/layerfs"]
+	path = vendor/layerfs
+	url = https://github.com/Ephemeral-AI-Lab/layerfs.git
+	ignore = dirty
+	shallow = true
