@@ -1,0 +1,31 @@
+{
+  "name": "lockstep",
+  "private": true,
+  "type": "module",
+  "description": "Pi Durable x superagent x LayerFS: orchestration and execution-layer demos",
+  "engines": {
+    "node": ">=22.19.0"
+  },
+  "scripts": {
+    "demo2": "node --disable-warning=ExperimentalWarning demo2/scenarios.ts",
+    "demo2:dir": "LOCKSTEP_WORKSPACES=dir node --disable-warning=ExperimentalWarning demo2/scenarios.ts",
+    "demo1": "node --disable-warning=ExperimentalWarning demo1/scenarios.ts",
+    "approve": "node --disable-warning=ExperimentalWarning demo2/approve.ts",
+    "check": "tsc --noEmit",
+    "setup": "bash scripts/setup.sh",
+    "setup:lfs": "docker build -t lockstep-sandbox:1 -f docker/sandbox.Dockerfile docker",
+    "site": "node --disable-warning=ExperimentalWarning scripts/serve-site.ts",
+    "site:bake": "node --disable-warning=ExperimentalWarning scripts/bake-traces.ts"
+  },
+  "dependencies": {
+    "@earendil-works/chord": "file:vendor/pi/packages/chord",
+    "@earendil-works/pi-ai": "file:vendor/pi/packages/ai",
+    "@earendil-works/pi-durable": "file:vendor/pi/packages/durable",
+    "@earendil-works/pi-schema": "file:vendor/pi/packages/schema",
+    "@layerfs/agent": "file:vendor/layerfs/api/agent"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.5",
+    "typescript": "7.0.2"
+  }
+}

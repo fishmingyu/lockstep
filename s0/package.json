@@ -1,0 +1,10 @@
+{
+  "name": "lockstep-s0",
+  "private": true,
+  "type": "module",
+  "description": "S0 feasibility probe: LayerFS 1.1.0 (7d42d0b) workspace recovery after SIGKILL",
+  "dependencies": {
+    "@layerfs/agent": "file:../vendor/layerfs/api/agent",
+    "@layerfs/backend": "file:../vendor/layerfs/api/backend"
+  }
+}

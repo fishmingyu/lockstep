@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+		<title>Lockstep — durable agents, step by step</title>
+		<meta name="description" content="Pi Durable × superagent × LayerFS: each demo scenario is an animated diagram you step through — kill the host mid-command, restart it, and watch what the store, the files and the model see. Numbers come from recorded runs." />
+		<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+		<meta name="theme-color" content="#f4ebe0" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" />
+		<link rel="stylesheet" href="styles.css" />
+		<script>
+			// apply the theme before the first paint: the saved choice, else the system's
+			try {
+				const saved = JSON.parse(localStorage.getItem("lockstep:theme"));
+				const dark = saved === null ? matchMedia("(prefers-color-scheme: dark)").matches : saved === "dark";
+				if (dark) document.documentElement.dataset.theme = "dark";
+			} catch (e) {}
+		</script>
+		<script type="module" src="js/app.js"></script>
+	</head>
+	<body>
+		<div class="window" id="app">
+			<header class="topbar">
+				<button class="icon-btn menu-btn" id="menu" aria-label="Open the course menu">
+					<svg class="i" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
+				</button>
+				<a class="brand" href="#/learn">
+					<svg viewBox="0 0 32 32" aria-hidden="true">
+						<path d="M16 3 28 10v4L16 21 4 14v-4Z" fill="var(--green-t2)" stroke="var(--stroke)" stroke-width="1.6" stroke-linejoin="round" />
+						<path d="M4 10l12 7 12-7M16 17v4" fill="none" stroke="var(--stroke)" stroke-width="1.4" stroke-linejoin="round" />
+						<path d="M4 17.5v4L16 28.5l12-7v-4" fill="var(--violet-l1)" stroke="var(--stroke)" stroke-width="1.6" stroke-linejoin="round" />
+						<path d="M4 17.5 16 24.5l12-7" fill="none" stroke="var(--stroke)" stroke-width="1.4" stroke-linejoin="round" />
+					</svg>
+					<span class="brand__name">Lock<span>step</span></span>
+				</a>
+				<nav class="nav" id="nav">
+					<a class="nav__item" data-view="learn" href="#/learn">
+						<svg class="i" viewBox="0 0 24 24"><path d="M4 5h6a2 2 0 0 1 2 2v12a2 2 0 0 0-2-2H4zM20 5h-6a2 2 0 0 0-2 2v12a2 2 0 0 1 2-2h6z" /></svg>Learn
+					</a>
+					<a class="nav__item" data-view="run" href="#/run">
+						<svg class="i" viewBox="0 0 24 24"><path d="m5 7 5 5-5 5M12 18h7" /></svg>Run it
+					</a>
+					<a class="nav__item" data-view="glossary" href="#/glossary">
+						<svg class="i" viewBox="0 0 24 24"><path d="M5 4h11l3 3v13H5zM9 9h6M9 13h6M9 17h3" /></svg>Glossary
+					</a>
+				</nav>
+				<div class="top-tools">
+					<button class="icon-btn" id="theme" aria-label="Toggle dark mode">
+						<svg class="i" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z" /></svg>
+					</button>
+					<span class="credit">
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 21 8v8l-9 5-9-5V8z" /><path d="M3 8l9 5 9-5M12 13v8" /></svg>
+						<span>pi durable ×<b>superagent × LayerFS</b></span>
+					</span>
+				</div>
+			</header>
+			<div class="body" id="body"></div>
+			<div class="drawer-backdrop" id="backdrop"></div>
+		</div>
+		<noscript>
+			<div style="max-width: 560px; margin: 15vh auto; padding: 0 24px; font: 15px/1.5 ui-monospace, Menlo, monospace; color: #1d1b18">
+				<h1 style="font-size: 24px">Lockstep</h1>
+				<p>The demos as animated diagrams you step through. It needs JavaScript to run — please turn it on and reload.</p>
+			</div>
+		</noscript>
+	</body>
+</html>
